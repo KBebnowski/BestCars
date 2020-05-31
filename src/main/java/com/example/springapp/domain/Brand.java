@@ -29,7 +29,7 @@ public class Brand {
     @JoinTable(name = "brand_category",
             joinColumns = @JoinColumn(name = "brand_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories = new HashSet<>();
+    private Set<Category> categories;
 
 
     //GETTERS AND SETTERS
