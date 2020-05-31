@@ -19,6 +19,16 @@ public class Model {
     @ManyToOne
     private Brand brand;
 
+    public Model() {
+    }
+
+    public Model(String name, int engineCapacity, int horsepower, Brand brand) {
+        this.name = name;
+        this.engineCapacity = engineCapacity;
+        this.horsepower = horsepower;
+        this.brand = brand;
+    }
+
     //GETTERS AND SETTERS
     public Long getId() {
         return id;
