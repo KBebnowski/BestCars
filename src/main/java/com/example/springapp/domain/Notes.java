@@ -12,6 +12,7 @@ public class Notes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Lob
     private String aboutBrand;
 
     @OneToOne
