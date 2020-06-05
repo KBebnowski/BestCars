@@ -17,6 +17,7 @@ import java.util.Optional;
 @Component
 public class CarBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
+
     private final BrandRepository brandRepository;
     private final CategoryRepository categoryRepository;
 
@@ -24,8 +25,6 @@ public class CarBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         this.brandRepository = brandRepository;
         this.categoryRepository = categoryRepository;
     }
-
-
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -51,6 +50,12 @@ public class CarBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         Category coupeCategory = coupeCategoryOptional.get();
         Category hatchbackCategory = hatchbackCategoryOptional.get();
 
+        categoryRepository.save(coupeCategory);
+        categoryRepository.save(sedanCategory);
+        categoryRepository.save(suvCategory);
+        categoryRepository.save(hatchbackCategory);
+
+
         //tworzenie 1 marki aut coupe
         Brand mercedes = new Brand();
         mercedes.setName("Mercedes-Benz");
@@ -71,10 +76,7 @@ public class CarBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
         mercedes.getCategories().add(coupeCategory);
 
-
         cars.add(mercedes);
-
-
 
         return cars;
     }
